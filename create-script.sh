@@ -16,6 +16,9 @@ mkdir -p "$bin_dir"
 script_file="$config_dir/$script_name.sh"
 touch "$script_file"
 
+# Give the script file executable permissions
+chmod +x "$script_file"
+
 # Create the symlink
 ln -s "$script_file" "$bin_dir/$script_name"
 
