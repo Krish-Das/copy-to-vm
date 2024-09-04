@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Define Script name
+ccs_name="create-script"
+
 # Define the directories
 config_dir="$HOME/.config/scripts"
 bin_dir="$HOME/.local/bin"
@@ -26,9 +29,11 @@ then
     ln -s "$script_file" "$bin_dir/$script_name"
 
     # Print a message
-    echo "Script $script_name.sh created in $config_dir and symlinked to $bin_dir"
-    echo "Edit the $config_dir/$script_file"
-    echo -e "\e[33;1mWarning: Deleting or renaming any files in the $config_dir or $bin_dir may cause broken symlinks.\e[0m\nTo fix any broken symlinks, please run 'create-script sync'."
+    echo -e "\e[32mScript $script_name.sh created in $config_dir and symlinked to $bin_dir\e[0m"
+    echo "You can edit the $script_file"
+    echo -e "\e[33;1mWarning: Deleting or renaming any files in the $config_dir or $bin_dir may cause broken symlinks.\e[0m\n"
+    echo -e "To fix any broken symlinks, please run '$ccs_name sync'."
+    
 # Check if the sync argument was passed
 elif [ "$1" = "sync" ]
 then
