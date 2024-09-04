@@ -30,6 +30,23 @@ then
 # Check if the sync argument was passed
 elif [ "$1" = "sync" ]
 then
+    # Loop through each file in the config directory
+    for file in "$config_dir"/*.sh
+    do
+        # Get the base name of the file
+        base_name=$(basename "$file")
+        # Get the name of the file without the extension
+        name="${base_name%.*}"
+
+        # If the symlink doesn't exist in the bin directory
+        if [ ! -L "$bin_dir/$name" ]
+        then
+            # Create the symlink
+            ln -s "$file" "$bin_dir/$name"
+            echo "Created symlink: $bin_dir/$name"
+        fi
+    done
+
     # Loop through each file in the bin directory
     for file in "$bin_dir"/*
     do
