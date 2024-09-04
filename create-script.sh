@@ -8,7 +8,7 @@ bin_dir="$HOME/.local/bin"
 if [ "$1" = "create" ]
 then
     # Ask the user for the name of the script
-    echo "\e[1mEnter the name of the script\e[0m (without the .sh extension):"
+    echo -e "\e[1mEnter the name of the script\e[0m (without the .sh extension):"
     read -r script_name
 
     # Create the directories if they don't exist
