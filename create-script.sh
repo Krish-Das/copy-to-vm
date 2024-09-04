@@ -8,7 +8,7 @@ bin_dir="$HOME/.local/bin"
 if [ "$1" = "create" ]
 then
     # Ask the user for the name of the script
-    echo "Enter the name of the script (without the .sh extension):"
+    echo "\e[1mEnter the name of the script\e[0m (without the .sh extension):"
     read -r script_name
 
     # Create the directories if they don't exist
@@ -27,6 +27,8 @@ then
 
     # Print a message
     echo "Script $script_name.sh created in $config_dir and symlinked to $bin_dir"
+    echo "Edit the $config_dir/$script_file"
+    echo -e "\e[33;1mWarning: Deleting or renaming any files in the $config_dir or $bin_dir may cause broken symlinks.\e[0m\nTo fix any broken symlinks, please run 'create-script sync'."
 # Check if the sync argument was passed
 elif [ "$1" = "sync" ]
 then
@@ -60,5 +62,5 @@ then
     done
 else
     # Print an error message
-    echo "Invalid argument. Please use 'create' or 'sync'."
+    echo -e "\e[1;31mInvalid argument.\n\e[0mPlease use 'create' or 'sync'."
 fi
